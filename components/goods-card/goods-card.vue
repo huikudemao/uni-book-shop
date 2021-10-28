@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<navigator class="goods-item">
+		<navigator class="goods-item" :url="'/pages/goods/goodsItem?id=' + goods.id">
 			<u-image class="u-skeleton-fillet" width="100%" height="300rpx" :src="goods.cover_url"></u-image>
 		    <view class="title u-line-1 u-skeleton-rect">{{goods.title?goods.title : '商品名称'}}</view>
 			<view class="u-flex u-row-between">

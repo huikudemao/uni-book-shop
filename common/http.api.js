@@ -21,6 +21,7 @@ const install = (Vue, vm) => {
 	// 用户相关
 	vm.$u.api.user = () => vm.$u.get('/api/user'); // 用户详情
 	vm.$u.api.userUpdate = (params) => vm.$u.put('/api/user',params); // 更新个人信息
+	vm.$u.api.userAvatar = (params) => vm.$u.patch('/api/user/avatar',params); // 更新个人信息
 	
 	// 购物车相关的
 	vm.$u.api.carts = (params) => vm.$u.post('/api/carts',params); // 添加到购物车
@@ -32,11 +33,14 @@ const install = (Vue, vm) => {
 	
 	// 订单相关的
 	vm.$u.api.preview = () => vm.$u.get('/api/orders/preview') // 订单预览
+	vm.$u.api.orders = () => vm.$u.get('/api/orders') // 提交订单
 	
 	// 收货地址相关的
 	vm.$u.api.getAddress = () => vm.$u.get('/api/address') // 地址请求
 	vm.$u.api.postAddress = (params) => vm.$u.post('/api/address',params) // 地址添加
 	vm.$u.api.putAddress = (id,params) => vm.$u.put(`/api/address/${id}`,params) // 地址修改
+	vm.$u.api.deleteAddress = id => vm.$u.delete(`/api/address/${id}`) // 购物车商品删除
+	
 	
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即this.$u.api)下

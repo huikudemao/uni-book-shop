@@ -52,6 +52,12 @@ export default {
 			// 缓存用户信息
 			this.$u.vuex('vuex_user',userInfo)
 			console.log(userInfo)
+			// vuex里面的数据经过了内部的处理，直接this.调用就行，
+			// 或者<view>{{vuex_user}}</view>使用
+			// <image :src="vuex_user.avatar_url"></image>
+			
+			// 提示消息
+			this.$u.toast('登录成功')
 			// 登录之后跳转到来源页,本地缓存没有来源页则跳转到index
 			const backUrl=uni.getStorageSync('back_url') || 'pages/index/index'
 			setTimeout(()=>{

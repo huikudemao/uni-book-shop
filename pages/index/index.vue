@@ -6,7 +6,7 @@
 			        bar-width="100" item-width="160"></u-tabs>
 		</view>
 		<u-row gutter="16" class="u-skeleton">
-			<u-col span="6" v-for="(goods,index) in goodsList.length !==0?goodsList:[{},{},{},{}]" :key="(index)">
+			<u-col span="6" v-for="(goods,index) in goodsList" :key="(index)">
 				<goods-card :goods='goods'></goods-card>
 			</u-col>
 		</u-row>
@@ -29,7 +29,7 @@
 				],
 				current: 0,
 				slides:[],
-				goodsList:[],
+				goodsList:[{},{},{},{}],
 				page:1,
 				loading:false
 			}
@@ -52,7 +52,7 @@
 				// 根据点击的值重新进行商品排序
 				this.current=index
 				// 重置商品数据和分页
-				this.goodsList=[]
+				this.goodsList=[{},{},{},{}]
 				this.page=1
 				this.getData()
 			},
@@ -76,7 +76,7 @@
 				console.log(res)
 				this.slides=res.slides
 				// this.goods=res.goods.data
-				this.goodsList=[...this.goodsList,...res.goods.data]
+				this.goodsList=this.goodsList.pop().title ? [...this.goodsList,...res.goods.data] : res.goods.data
 			}
 		},
 		// 页面生命周期，滚动到底部事件
